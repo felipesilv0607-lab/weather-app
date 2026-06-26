@@ -3,11 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Aplicativo do Tempo</title>
 
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+    <main class="container">
+
+        <h1>🌤 Aplicativo do Tempo</h1>
+
+        <section class="pesquisa">
+
+            <input
+                type="text"
+                id="cidade"
+                placeholder="Digite o nome da cidade">
+
+            <button id="buscar">
+                Buscar
+            </button>
+
+        </section>
+
+        <section class="clima">
+
+            <h2 id="nome-cidade">Cidade</h2>
+
+            <p id="temperatura">
+                --°C
+            </p>
+
+            <p id="descricao">
+                Descrição do clima
+            </p>
+
+            <div class="informacoes">
+
+                <p>
+                    Sensação:
+                    <span id="sensacao">--°C</span>
+                </p>
+
+                <p>
+                    Umidade:
+                    <span id="umidade">--%</span>
+                </p>
+
+                <p>
+                    Vento:
+                    <span id="vento">-- km/h</span>
+                </p>
+
+                <p>
+                    Máxima:
+                    <span id="maxima">--°C</span>
+                </p>
+
+                <p>
+                    Mínima:
+                    <span id="minima">--°C</span>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
 
     <script src="./js/script.js"></script>
 
