@@ -132,4 +132,21 @@ button:hover {
     flex-direction: column;
     gap: 12px;
     text-align: left;
+
+/* ==========================
+   Ícone do clima
+========================== */
+
+#icone-clima {
+    width: 100px;
+    height: 100px;
+    margin: 10px auto; display: block;
+    visibility: hidden;
+   
 }
+    
+}
+
+
+
+

@@ -23,6 +23,7 @@ const umidade = document.getElementById("umidade");
 const vento = document.getElementById("vento");
 const maxima = document.getElementById("maxima");
 const minima = document.getElementById("minima");
+const iconeClima = document.getElementById("icone-clima");
 
 // ==============================
 // Função para buscar o clima
@@ -55,6 +56,14 @@ async function buscarClima() {
         // Converte a resposta para JSON
         const dados = await resposta.json();
 
+        const codigoIcone = dados.weather[0].icon;
+
+        iconeClima.src = `https://openweathermap.org/img/wn/${codigoIcone}@2x.png`;
+
+        iconeClima.alt = dados.weather[0].description;
+
+        iconeClima.style.visibility = "visible";
+
         // Apenas para desenvolvimento
         console.log(dados);
 
@@ -69,6 +78,8 @@ async function buscarClima() {
         minima.textContent = `${Math.round(dados.main.temp_min)}°C`;
 
     } catch (erro) {
+
+       iconeClima.style.visibility = "hidden";
 
         alert(erro.message);
 
