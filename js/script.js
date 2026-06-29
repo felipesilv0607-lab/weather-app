@@ -26,60 +26,78 @@ const minima = document.getElementById("minima");
 const iconeClima = document.getElementById("icone-clima");
 
 // ==============================
-// Função para buscar o clima
+// Atualiza os dados na tela
+// ==============================
+
+function atualizarTela(dados) {
+
+    const codigoIcone = dados.weather[0].icon;
+
+    nomeCidade.textContent = dados.name;
+    temperatura.textContent = `${Math.round(dados.main.temp)}°C`;
+    descricao.textContent = dados.weather[0].description;
+    sensacao.textContent = `${Math.round(dados.main.feels_like)}°C`;
+    umidade.textContent = `${dados.main.humidity}%`;
+    vento.textContent = `${dados.wind.speed} m/s`;
+    maxima.textContent = `${Math.round(dados.main.temp_max)}°C`;
+    minima.textContent = `${Math.round(dados.main.temp_min)}°C`;
+
+    iconeClima.src = `https://openweathermap.org/img/wn/${codigoIcone}@2x.png`;
+    iconeClima.alt = dados.weather[0].description;
+    iconeClima.style.visibility = "visible";
+}
+
+// ==============================
+// Cria a URL da API
+// ==============================
+
+function criarUrl(cidade) {
+
+    return `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${API_KEY}&units=metric&lang=pt_br`;
+
+}
+
+// ==============================
+// Busca o clima da cidade
 // ==============================
 
 async function buscarClima() {
 
-    // Remove espaços em branco antes e depois do texto
+    // Remove espaços em branco
     const cidade = inputCidade.value.trim();
 
-    // Verifica se o usuário digitou alguma cidade
+    // Valida o campo
     if (cidade === "") {
         alert("Digite o nome de uma cidade.");
         return;
     }
 
-    // URL da API
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${API_KEY}&units=metric&lang=pt_br`;
+    // Cria a URL
+    const url = criarUrl(cidade);
 
     try {
 
-        // Faz a requisição para a API
+        // Faz a requisição
         const resposta = await fetch(url);
 
-        // Verifica se a resposta foi bem sucedida
+        // Verifica se houve sucesso
         if (!resposta.ok) {
             throw new Error("Cidade não encontrada.");
         }
 
-        // Converte a resposta para JSON
+        // Converte para JSON
         const dados = await resposta.json();
 
-        const codigoIcone = dados.weather[0].icon;
-
-        iconeClima.src = `https://openweathermap.org/img/wn/${codigoIcone}@2x.png`;
-
-        iconeClima.alt = dados.weather[0].description;
-
-        iconeClima.style.visibility = "visible";
-
-        // Apenas para desenvolvimento
+        // Exibe os dados no console (desenvolvimento)
         console.log(dados);
 
-        // Atualiza os elementos da página
-        nomeCidade.textContent = dados.name;
-        temperatura.textContent = `${Math.round(dados.main.temp)}°C`;
-        descricao.textContent = dados.weather[0].description;
-        sensacao.textContent = `${Math.round(dados.main.feels_like)}°C`;
-        umidade.textContent = `${dados.main.humidity}%`;
-        vento.textContent = `${dados.wind.speed} m/s`;
-        maxima.textContent = `${Math.round(dados.main.temp_max)}°C`;
-        minima.textContent = `${Math.round(dados.main.temp_min)}°C`;
+        // Atualiza a interface
+        atualizarTela(dados);
 
     } catch (erro) {
 
-       iconeClima.style.visibility = "hidden";
+        // Esconde o ícone caso ocorra erro
+        iconeClima.style.visibility = "hidden";
 
         alert(erro.message);
 
