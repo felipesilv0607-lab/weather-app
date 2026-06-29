@@ -2,7 +2,7 @@
 // Configuração da API
 // ==============================
 
-const API_KEY = "5b4e994fa92772f4f232b8767bc9b1bc";
+const API_KEY = "SUA_API_KEY";
 
 // ==============================
 // Elementos do HTML
