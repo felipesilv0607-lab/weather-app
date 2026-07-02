@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Aplicativo do Tempo</title>
 
-    <link rel="stylesheet" href=    "./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+
 </head>
+
 <body>
 
     <main class="container">
 
         <h1>🌤 Aplicativo do Tempo</h1>
 
+        <!-- Área de pesquisa -->
         <section class="pesquisa">
 
             <input
@@ -26,51 +32,68 @@
 
         </section>
 
+        <!-- Loading -->
+        <p id="loading" class="loading">
+            Buscando informações...
+        </p>
+
+        <!-- Resultado -->
         <section class="clima">
 
             <h2 id="nome-cidade">Cidade</h2>
 
             <img
-              id="icone-clima"
-              src=""
-              alt="Ícone do clima">
+                id="icone-clima"
+                src=""
+                alt="Ícone do clima">
 
-            <p id="temperatura">
-                --°C
-            </p>
+            <p id="temperatura">--°C</p>
 
-            <p id="descricao">
-                Descrição do clima
-            </p>
+            <p id="descricao">Descrição do clima</p>
 
             <div class="informacoes">
 
-                <p>
-                    Sensação:
-                    <span id="sensacao">--°C</span>
-                </p>
+    <div class="card-info">
+        <span class="icone">🌡️</span>
+        <div>
+            <p class="titulo-info">Sensação</p>
+            <span id="sensacao">--°C</span>
+        </div>
+    </div>
 
-                <p>
-                    Umidade:
-                    <span id="umidade">--%</span>
-                </p>
+    <div class="card-info">
+        <span class="icone">💧</span>
+        <div>
+            <p class="titulo-info">Umidade</p>
+            <span id="umidade">--%</span>
+        </div>
+    </div>
 
-                <p>
-                    Vento:
-                    <span id="vento">-- km/h</span>
-                </p>
+    <div class="card-info">
+        <span class="icone">🌬️</span>
+        <div>
+            <p class="titulo-info">Vento</p>
+            <span id="vento">-- km/h</span>
+        </div>
+    </div>
 
-                <p>
-                    Máxima:
-                    <span id="maxima">--°C</span>
-                </p>
+    <div class="card-info">
+        <span class="icone">🔺</span>
+        <div>
+            <p class="titulo-info">Máxima</p>
+            <span id="maxima">--°C</span>
+        </div>
+    </div>
 
-                <p>
-                    Mínima:
-                    <span id="minima">--°C</span>
-                </p>
+    <div class="card-info">
+        <span class="icone">🔻</span>
+        <div>
+            <p class="titulo-info">Mínima</p>
+            <span id="minima">--°C</span>
+        </div>
+    </div>
 
-            </div>
+</div>
 
         </section>
 
@@ -79,4 +102,5 @@
     <script src="./js/script.js"></script>
 
 </body>
+
 </html>

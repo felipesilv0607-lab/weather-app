@@ -2,19 +2,15 @@
 // Configuração da API
 // ==============================
 
-const API_KEY = "SUA_API_KEY";
+const API_KEY = "e7e90ccea0d46b14f1c38e97c9e20c4f";
 
 // ==============================
 // Elementos do HTML
 // ==============================
 
-// Campo onde o usuário digita a cidade
 const inputCidade = document.getElementById("cidade");
-
-// Botão de busca
 const botaoBuscar = document.getElementById("buscar");
 
-// Área onde serão exibidos os dados
 const nomeCidade = document.getElementById("nome-cidade");
 const temperatura = document.getElementById("temperatura");
 const descricao = document.getElementById("descricao");
@@ -23,10 +19,12 @@ const umidade = document.getElementById("umidade");
 const vento = document.getElementById("vento");
 const maxima = document.getElementById("maxima");
 const minima = document.getElementById("minima");
+
 const iconeClima = document.getElementById("icone-clima");
+const loading = document.getElementById("loading");
 
 // ==============================
-// Atualiza os dados na tela
+// Atualiza a interface
 // ==============================
 
 function atualizarTela(dados) {
@@ -36,9 +34,10 @@ function atualizarTela(dados) {
     nomeCidade.textContent = dados.name;
     temperatura.textContent = `${Math.round(dados.main.temp)}°C`;
     descricao.textContent = dados.weather[0].description;
+
     sensacao.textContent = `${Math.round(dados.main.feels_like)}°C`;
     umidade.textContent = `${dados.main.humidity}%`;
-    vento.textContent = `${dados.wind.speed} m/s`;
+    vento.textContent = `${dados.wind.speed} km/h`;
     maxima.textContent = `${Math.round(dados.main.temp_max)}°C`;
     minima.textContent = `${Math.round(dados.main.temp_min)}°C`;
 
@@ -58,48 +57,58 @@ function criarUrl(cidade) {
 }
 
 // ==============================
-// Busca o clima da cidade
+// Loading
+// ==============================
+
+function mostrarLoading() {
+    loading.style.display = "block";
+}
+
+function esconderLoading() {
+    loading.style.display = "none";
+}
+
+// ==============================
+// Busca o clima
 // ==============================
 
 async function buscarClima() {
 
-    // Remove espaços em branco
     const cidade = inputCidade.value.trim();
 
-    // Valida o campo
     if (cidade === "") {
         alert("Digite o nome de uma cidade.");
         return;
     }
 
-    // Cria a URL
-    const url = criarUrl(cidade);
+    mostrarLoading();
+
+    iconeClima.style.visibility = "hidden";
 
     try {
 
-        // Faz a requisição
-        const resposta = await fetch(url);
+        const resposta = await fetch(criarUrl(cidade));
 
-        // Verifica se houve sucesso
         if (!resposta.ok) {
             throw new Error("Cidade não encontrada.");
         }
 
-        // Converte para JSON
         const dados = await resposta.json();
 
-        // Exibe os dados no console (desenvolvimento)
         console.log(dados);
 
-        // Atualiza a interface
         atualizarTela(dados);
 
     } catch (erro) {
 
-        // Esconde o ícone caso ocorra erro
         iconeClima.style.visibility = "hidden";
+        iconeClima.src = "";
 
         alert(erro.message);
+
+    } finally {
+
+        esconderLoading();
 
     }
 
@@ -109,16 +118,12 @@ async function buscarClima() {
 // Eventos
 // ==============================
 
-// Clique no botão
 botaoBuscar.addEventListener("click", buscarClima);
 
-// Pressionar Enter
-inputCidade.addEventListener("keydown", function (event) {
+inputCidade.addEventListener("keydown", (event) => {
 
     if (event.key === "Enter") {
-
         buscarClima();
-
     }
 
 });
