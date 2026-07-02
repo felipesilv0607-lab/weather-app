@@ -19,9 +19,38 @@ const umidade = document.getElementById("umidade");
 const vento = document.getElementById("vento");
 const maxima = document.getElementById("maxima");
 const minima = document.getElementById("minima");
-
+const nascerSol = document.getElementById("nascer-sol");
+const porSol = document.getElementById("por-sol");
 const iconeClima = document.getElementById("icone-clima");
 const loading = document.getElementById("loading");
+
+// ==============================
+// Converte o código do país
+// ==============================
+
+function obterNomePais(codigoPais) {
+
+    return new Intl.DisplayNames(
+        ["pt-BR"],
+        { type: "region" }
+    ).of(codigoPais);
+
+}
+
+// ==============================
+// Formata horário
+// ==============================
+
+function formatarHora(timestamp) {
+
+    const data = new Date(timestamp * 1000);
+
+    return data.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+}
 
 // ==============================
 // Atualiza a interface
@@ -31,7 +60,9 @@ function atualizarTela(dados) {
 
     const codigoIcone = dados.weather[0].icon;
 
-    nomeCidade.textContent = dados.name;
+    const pais = obterNomePais(dados.sys.country);
+
+nomeCidade.textContent = `${dados.name} - ${pais}`;
     temperatura.textContent = `${Math.round(dados.main.temp)}°C`;
     descricao.textContent = dados.weather[0].description;
 
@@ -40,6 +71,8 @@ function atualizarTela(dados) {
     vento.textContent = `${dados.wind.speed} km/h`;
     maxima.textContent = `${Math.round(dados.main.temp_max)}°C`;
     minima.textContent = `${Math.round(dados.main.temp_min)}°C`;
+    nascerSol.textContent = formatarHora(dados.sys.sunrise);
+    porSol.textContent = formatarHora(dados.sys.sunset);
 
     iconeClima.src = `https://openweathermap.org/img/wn/${codigoIcone}@2x.png`;
     iconeClima.alt = dados.weather[0].description;
