@@ -2,7 +2,7 @@
 // Configuração da API
 // ==============================
 
-const API_KEY = "e7e90ccea0d46b14f1c38e97c9e20c4f";
+const API_KEY = "SUA_CHAVE_DE_API_AQUI"; // Substitua pela sua chave de API do OpenWeatherMap
 
 // ==============================
 // Elementos do HTML
@@ -53,12 +53,58 @@ function formatarHora(timestamp) {
 }
 
 // ==============================
+// Atualiza o fundo conforme o clima
+// ==============================
+
+function atualizarFundo(clima) {
+
+    const body = document.body;
+
+    switch (clima) {
+
+        case "Clear":
+            body.style.background = "linear-gradient(180deg, #4facfe, #00c6fb)";
+            break;
+
+        case "Clouds":
+            body.style.background = "linear-gradient(180deg, #8e9eab, #eef2f3)";
+            break;
+
+        case "Rain":
+        case "Drizzle":
+            body.style.background = "linear-gradient(180deg, #4b79a1, #283e51)";
+            break;
+
+        case "Thunderstorm":
+            body.style.background = "linear-gradient(180deg, #232526, #414345)";
+            break;
+
+        case "Snow":
+            body.style.background = "linear-gradient(180deg, #ffffff, #d7e1ec)";
+            break;
+
+        case "Mist":
+        case "Fog":
+        case "Haze":
+            body.style.background = "linear-gradient(180deg, #bdc3c7, #2c3e50)";
+            break;
+
+        default:
+            body.style.background = "linear-gradient(180deg, #4facfe, #00c6fb)";
+    }
+
+}
+
+// ==============================
 // Atualiza a interface
 // ==============================
 
 function atualizarTela(dados) {
 
     const codigoIcone = dados.weather[0].icon;
+    const clima = dados.weather[0].main;
+
+atualizarFundo(clima);
 
     const pais = obterNomePais(dados.sys.country);
 
