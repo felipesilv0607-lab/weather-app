@@ -56,16 +56,17 @@ h1 {
 
 .pesquisa {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 15px;
 }
+
 
 /* ==========================
    Campo de texto
 ========================== */
 
 input {
-    flex: 1;
+    flex: 1 1 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -75,33 +76,33 @@ input {
 /* ==========================
   Campo de Botão
 ========================== */
-button{
+button {
+    flex: 1;
 
-    padding:12px 22px;
+    padding: 12px;
 
-    border:none;
+    border: none;
 
-    border-radius:10px;
+    border-radius: 10px;
 
-    background:#2196f3;
+    background: #2196f3;
 
-    color:#fff;
+    color: white;
 
-    font-weight:bold;
+    cursor: pointer;
 
-    cursor:pointer;
+    font-weight: bold;
 
-    transition:.3s;
+    transition: .3s;
+}
+
+button:hover {
+
+    background: #1976d2;
 
 }
 
-button:hover{
 
-    background:#1976d2;
-
-    transform:scale(1.03);
-
-}
 
 /* ==========================
    Loading
