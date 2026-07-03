@@ -8,6 +8,10 @@
 
     <title>Aplicativo do Tempo</title>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
@@ -18,7 +22,7 @@
 
         <h1>🌤 Aplicativo do Tempo</h1>
 
-        <!-- Área de pesquisa -->
+        <!-- Pesquisa -->
         <section class="pesquisa">
 
             <input
@@ -30,9 +34,9 @@
                 Buscar
             </button>
 
-             <button id="localizacao">
-               📍 Minha localização
-             </button>
+            <button id="localizacao">
+                📍
+            </button>
 
         </section>
 
@@ -41,95 +45,145 @@
             Buscando informações...
         </p>
 
-        <!-- Resultado -->
+        <!-- Clima atual -->
         <section class="clima">
 
             <h2 id="nome-cidade">Cidade</h2>
 
-            <img
-                id="icone-clima"
-                src=""
-                alt="Ícone do clima">
-
+            <canvas id="icone-clima" width="128" height="128"></canvas>
+            
             <p id="temperatura">--°C</p>
 
             <p id="descricao">Descrição do clima</p>
 
+            <!-- Informações -->
             <div class="informacoes">
 
-          <section class="previsao">
+                <div class="card-info">
 
-            <h2>Previsão para os próximos dias</h2>
+                    <i class="fa-solid fa-temperature-half icone"></i>
 
-             <div id="previsao-container">
+                    <div>
+
+                        <p class="titulo-info">Sensação</p>
+
+                        <span id="sensacao">--°C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <i class="fa-solid fa-droplet icone"></i>
+
+                    <div>
+
+                        <p class="titulo-info">Umidade</p>
+
+                        <span id="umidade">--%</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <i class="fa-solid fa-wind icone"></i>
+
+                    <div>
+
+                        <p class="titulo-info">Vento</p>
+
+                        <span id="vento">-- km/h</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <i class="fa-solid fa-arrow-up icone"></i>
+
+                    <div>
+
+                        <p class="titulo-info">Máxima</p>
+
+                        <span id="maxima">--°C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <i class="fa-solid fa-arrow-down icone"></i>
+
+                    <div>
+
+                        <p class="titulo-info">Mínima</p>
+
+                        <span id="minima">--°C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <i class="fa-solid fa-sun icone"></i>
+
+                    <div>
+
+                        <p class="titulo-info">Nascer</p>
+
+                        <span id="nascer-sol">--:--</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <i class="fa-solid fa-moon icone"></i>
+
+                    <div>
+
+                        <p class="titulo-info">Pôr do Sol</p>
+
+                        <span id="por-sol">--:--</span>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </section>
 
-    <div class="card-info">
-        <span class="icone">🌡️</span>
-        <div>
-            <p class="titulo-info">Sensação</p>
-            <span id="sensacao">--°C</span>
-        </div>
-    </div>
+        <!-- Previsão -->
+        <section class="previsao">
 
-    <div class="card-info">
-        <span class="icone">💧</span>
-        <div>
-            <p class="titulo-info">Umidade</p>
-            <span id="umidade">--%</span>
-        </div>
-    </div>
+            <div class="cabecalho-previsao">
 
-    <div class="card-info">
-        <span class="icone">🌬️</span>
-        <div>
-            <p class="titulo-info">Vento</p>
-            <span id="vento">-- km/h</span>
-        </div>
-    </div>
+                <i class="fa-solid fa-calendar-days"></i>
 
-    <div class="card-info">
-        <span class="icone">🔺</span>
-        <div>
-            <p class="titulo-info">Máxima</p>
-            <span id="maxima">--°C</span>
-        </div>
-    </div>
+                <span>Próximos 5 dias</span>
 
-    <div class="card-info">
-        <span class="icone">🔻</span>
-        <div>
-            <p class="titulo-info">Mínima</p>
-            <span id="minima">--°C</span>
-        </div>
-    </div>
+            </div>
 
-      <div class="card-info">
-    <span class="icone">🌅</span>
-    <div>
-        <p class="titulo-info">Nascer do Sol</p>
-        <span id="nascer-sol">--:--</span>
-    </div>
-</div>
-
-<div class="card-info">
-    <span class="icone">🌇</span>
-    <div>
-        <p class="titulo-info">Pôr do Sol</p>
-        <span id="por-sol">--:--</span>
-    </div>
-</div>
-
-    </div>
+            <div id="previsao-container"></div>
 
         </section>
 
     </main>
 
-    <script type="module" src="./js/script.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+
+      <script type="module" src="./js/script.js"></script>
+
+
 </body>
 
 </html>

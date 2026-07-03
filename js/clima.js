@@ -41,7 +41,7 @@ export function atualizarTela(dados) {
         `${dados.main.humidity}%`;
 
     document.getElementById("vento").textContent =
-        `${dados.wind.speed} km/h`;
+        `${Math.round(dados.wind.speed * 3.6)} km/h`;
 
     document.getElementById("maxima").textContent =
         `${Math.round(dados.main.temp_max)}°C`;
@@ -55,12 +55,17 @@ export function atualizarTela(dados) {
     document.getElementById("por-sol").textContent =
         formatarHora(dados.sys.sunset);
 
+    // ==============================
+    // Ícone do clima
+    // ==============================
+
     const icone = document.getElementById("icone-clima");
 
     icone.src =
         `https://openweathermap.org/img/wn/${dados.weather[0].icon}@2x.png`;
 
-    icone.alt = dados.weather[0].description;
+    icone.alt =
+        dados.weather[0].description;
 
     icone.style.visibility = "visible";
 
