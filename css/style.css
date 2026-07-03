@@ -14,14 +14,16 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, #4facfe, #00c6fb);
     min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    transition: background 0.8s ease;
+    background: linear-gradient(135deg, #4facfe, #00c6fb);
+
+    transition:
+        background 1.2s ease-in-out;
 }
 
 /* ==========================
@@ -36,6 +38,12 @@ body {
     border-radius: 24px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
     backdrop-filter: blur(10px);
+    transition: .35s;
+    .container:hover{
+
+    transform:translateY(-4px);
+
+}
 }
 
 /* ==========================
@@ -77,21 +85,38 @@ input {
 
 input:focus {
     border-color: #2196f3;
+
+    box-shadow: 0 0px 15px rgba(33, 150, 243, .25);
 }
+
 /* ==========================
-  Campo de Botão
-========================== */
+   Botão    
+========================== */   
+button{
+    padding:14px 22px;
+    border:none;
+    border-radius:12px;
+    background:#2196f3;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+}
 
+button:hover{
 
-button {
-    padding: 14px 22px;
-    border: none;
-    border-radius: 12px;
-    background: #2196f3;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: .3s;
+    background:#1976d2;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(33,150,243,.30);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
 }
 
 
@@ -121,9 +146,16 @@ button {
    Nome da cidade
 ========================== */
 
-#nome-cidade {
-    color: #333;
-    margin-bottom: 15px;
+#nome-cidade{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#1f2937;
+
+    margin-bottom:10px;
+
 }
 
 /* ==========================
@@ -142,21 +174,32 @@ button {
    Temperatura
 ========================== */
 
-#temperatura {
-    font-size: 60px;
-    font-weight: bold;
-    color: #2196f3;
-    margin-bottom: 10px;
+#temperatura{
+
+    font-size:72px;
+
+    font-weight:700;
+
+    color:#2196f3;
+
+    margin:10px 0;
+
 }
 
 /* ==========================
    Descrição do clima
 ========================== */
 
-#descricao {
-    color: #666;
-    margin-bottom: 25px;
-    text-transform: capitalize;
+#descricao{
+
+    font-size:18px;
+
+    color:#6b7280;
+
+    margin-bottom:30px;
+
+    text-transform:capitalize;
+
 }
 /* ==========================
    Informações
@@ -181,13 +224,31 @@ button {
     transition: all .3s ease;
 }
 
-.card-info:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+.card-info:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+
 }
 
-.icone {
-    font-size: 28px;
+.card-info:hover .icone{
+
+    transform:scale(1.15) rotate(-8deg);
+
+}
+
+
+.icone{
+
+    font-size:30px;
+
+    min-width:40px;
+
+    text-align:center;
+
+    transition:all .35s ease;
+
 }
 
 .titulo-info {
@@ -202,6 +263,57 @@ button {
     font-weight: bold;
     color: #2196f3;
 }
+
+/* ==========================
+   Cores dos ícones
+========================== */
+
+.temperatura{
+
+    color:#ff7043;
+
+}
+
+.umidade{
+
+    color:#29b6f6;
+
+}
+
+.vento{
+
+    color:#26c6da;
+
+}
+
+.maxima{
+
+    color:#ff9800;
+
+}
+
+.minima{
+
+    color:#42a5f5;
+
+}
+
+.nascer{
+
+    color:#fbc02d;
+
+}
+
+.por{
+
+    color:#5c6bc0;
+
+}
+
+
+
+
+
 
 /* ==========================
    Previsão
@@ -238,21 +350,34 @@ button {
     border-radius: 20px;
 }
 
-.card-previsao {
-    min-width: 110px;
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 18px 15px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,.08);
-    border: 1px solid #edf2f7;
-    transition: .3s;
-    flex-shrink: 0;
+.card-previsao{
+
+    min-width:120px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    border:1px solid #edf2f7;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    flex-shrink:0;
+
 }
 
-.card-previsao:hover {
-    transform: translateY(-5px);
+.card-previsao:hover{
+
+    transform:translateY(-6px) scale(1.04);
+
 }
+
 
 .card-previsao h3 {
     font-size: 17px;
@@ -278,76 +403,3 @@ button {
     color: #6b7280;
 }
 
-/* ==========================
-   Previsão para os próximos dias
-========================== */
-
-.previsao {
-    margin-top: 35px;
-}
-
-.cabecalho-previsao {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #444;
-    margin: 30px 0 20px;
-}
-
-#previsao-container {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-}
-
-#previsao-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-#previsao-container::-webkit-scrollbar-thumb {
-    background: #2196f3;
-    border-radius: 10px;
-}
-
-.card-previsao {
-    min-width: 120px;
-    background: #f5f7fa;
-    border-radius: 15px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,.08);
-    transition: transform .25s ease;
-    flex-shrink: 0;
-}
-
-.card-previsao:hover {
-    transform: translateY(-5px);
-}
-
-.card-previsao h3 {
-    margin-bottom: 10px;
-    color: #333;
-    font-size: 18px;
-}
-
-.card-previsao img {
-    width: 70px;
-    height: 70px;
-}
-
-.card-previsao p {
-    margin: 5px 0;
-    color: #555;
-}
-
-.card-previsao .temperatura {
-    font-size: 22px;
-    font-weight: bold;
-    color: #2196f3;
-}
-
-}

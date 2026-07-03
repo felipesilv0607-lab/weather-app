@@ -4,16 +4,69 @@ import {
 } from "./utilitarios.js";
 
 // ==============================
-// Atualiza o fundo
+// Atualiza o fundo conforme clima e temperatura
 // ==============================
 
-export function atualizarFundo(clima) {
+export function atualizarFundo(clima, temperatura) {
 
     const body = document.body;
 
-    body.className = "";
+    let fundo = "";
 
-    body.classList.add(clima.toLowerCase());
+    switch (clima) {
+
+        case "Clear":
+
+            if (temperatura >= 35) {
+
+                fundo = "linear-gradient(135deg, #ff7e5f, #feb47b, #ffd56b)";
+
+            } else if (temperatura >= 25) {
+
+                fundo = "linear-gradient(135deg, #4facfe, #00c6fb, #6dd5fa)";
+
+            } else {
+
+                fundo = "linear-gradient(135deg, #74ebd5, #ACB6E5)";
+
+            }
+
+            break;
+
+        case "Clouds":
+
+            fundo = "linear-gradient(135deg, #8e9eab, #eef2f3)";
+            break;
+
+        case "Rain":
+        case "Drizzle":
+
+            fundo = "linear-gradient(135deg, #355c7d, #6c5b7b, #355c7d)";
+            break;
+
+        case "Thunderstorm":
+
+            fundo = "linear-gradient(135deg, #232526, #414345, #1e3c72)";
+            break;
+
+        case "Snow":
+
+            fundo = "linear-gradient(135deg, #eef2f3, #d9e4f5, #ffffff)";
+            break;
+
+        case "Mist":
+        case "Fog":
+        case "Haze":
+
+            fundo = "linear-gradient(135deg, #bdc3c7, #2c3e50)";
+            break;
+
+        default:
+
+            fundo = "linear-gradient(135deg, #4facfe, #00c6fb)";
+    }
+
+    body.style.background = fundo;
 
 }
 
@@ -23,7 +76,7 @@ export function atualizarFundo(clima) {
 
 export function atualizarTela(dados) {
 
-    atualizarFundo(dados.weather[0].main);
+    atualizarFundo(dados.weather[0].main, dados.main.temp);
 
     document.getElementById("nome-cidade").textContent =
         `${dados.name} - ${obterNomePais(dados.sys.country)}`;
