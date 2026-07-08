@@ -403,3 +403,116 @@ button:active{
     color: #6b7280;
 }
 
+/* ==========================
+   Responsividade
+========================== */
+
+/* Tablets */
+
+@media (max-width: 768px) {
+
+    body{
+        padding:20px;
+        align-items:flex-start;
+    }
+
+    .container{
+        max-width:100%;
+        padding:25px;
+        border-radius:20px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    #temperatura{
+        font-size:60px;
+    }
+
+}
+
+/* Celulares */
+
+@media (max-width:600px){
+
+    body{
+        padding:15px;
+    }
+
+    .container{
+        padding:20px;
+    }
+
+    .pesquisa{
+
+        flex-direction:column;
+
+    }
+
+    input,
+    button{
+
+        width:100%;
+
+    }
+
+    .informacoes{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #temperatura{
+
+        font-size:56px;
+
+    }
+
+    .card-info{
+
+        padding:16px;
+
+    }
+
+}
+
+/* Celulares pequenos */
+
+@media (max-width:400px){
+
+    h1{
+
+        font-size:24px;
+
+    }
+
+    #nome-cidade{
+
+        font-size:24px;
+
+    }
+
+    #temperatura{
+
+        font-size:48px;
+
+    }
+
+    .cabecalho-previsao{
+
+        font-size:16px;
+
+    }
+
+    .card-previsao{
+
+        min-width:105px;
+
+        padding:14px;
+
+    }
+
+}
+
+
