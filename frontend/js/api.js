@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://weather-app-5e5u.onrender.com";
 
 // ==============================
 // Clima por cidade
